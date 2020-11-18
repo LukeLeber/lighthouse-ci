@@ -26,6 +26,10 @@ class ApiClient {
       const {username = ApiClient.DEFAULT_BASIC_AUTH_USERNAME, password} = options.basicAuth;
       this._extraHeaders.Authorization = `Basic ${btoa(`${username}:${password}`)}`;
     }
+    elseif (options.ssoAuth) {
+      this._extraHeaders.SSO = '1';
+    }
+
 
     /** @type {LHCI.ServerCommand.StorageMethod} */
     const typecheck = this; // eslint-disable-line no-unused-vars
